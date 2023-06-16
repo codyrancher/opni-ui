@@ -18,7 +18,7 @@ export default function(plugin: IPlugin, context: any) {
   // We add this interceptor to prevent store requests from going through since we don't rely on the stores in standalone. It would probably be better if shell didn't make this request at all.
   if (isStandalone()) {
     context.$axios.interceptors.request.use((config: any) => {
-      config.cancelToken = new axios.CancelToken(cancel => cancel('Not a valid request for standalone'));
+      // config.cancelToken = new axios.CancelToken(cancel => cancel('Not a valid request for standalone'));
 
       return config;
     }, (error: any) => {
