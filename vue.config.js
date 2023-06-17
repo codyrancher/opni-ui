@@ -35,6 +35,8 @@ baseConfig.configureWebpack = (config) => {
   baseConfigureWebpack(config);
 };
 
+baseConfig.chainWebpack = config => config.optimization.minimize(false);
+
 // Makes the public path relative so that the <base> element will affect the assets.
 if (!isStandalone) {
   baseConfig.publicPath = './';
