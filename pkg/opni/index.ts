@@ -9,6 +9,7 @@ import { isStandalone } from './utils/standalone';
 
 // Init the package
 export default function(plugin: IPlugin, context: any) {
+  console.log('aggg', context);
   // Auto-import model, detail, edit from the folders
   importTypes(plugin);
 

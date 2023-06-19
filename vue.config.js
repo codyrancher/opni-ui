@@ -30,12 +30,13 @@ baseConfig.devServer.proxy = {
 };
 
 baseConfig.configureWebpack = (config) => {
-  config.plugins.push(new webpack.DefinePlugin({ 'process.env.isStandalone': JSON.stringify(isStandalone) }));
+  config.plugins.push(new webpack.DefinePlugin({
+    'process.env.isStandalone': JSON.stringify(isStandalone),
+    'process.env.routerBase':      `(() => {const url = window.location.href;const prefixRegex = /.*proxy\//gm; return prefixRegex.test(url) ? url.match(prefixRegex)[0] : '/';})()`,
+  }));
 
   baseConfigureWebpack(config);
 };
-
-baseConfig.chainWebpack = config => config.optimization.minimize(false);
 
 // Makes the public path relative so that the <base> element will affect the assets.
 if (!isStandalone) {
