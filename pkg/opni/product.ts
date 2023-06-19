@@ -20,8 +20,6 @@ export function init(plugin: any, store: any) {
       return;
     }
 
-    console.log('baaaaase', process.env.routerBase);
-
     const clusterOverrideSearchParam = 'c=';
     const clusterId = window.location.search.includes(clusterOverrideSearchParam) ? window.location.search.replace(`?${ clusterOverrideSearchParam }`, '') : 'local';
     const isLocalCluster = clusterId === 'local';
