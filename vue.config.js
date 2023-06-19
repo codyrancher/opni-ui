@@ -32,7 +32,7 @@ baseConfig.devServer.proxy = {
 baseConfig.configureWebpack = (config) => {
   config.plugins.push(new webpack.DefinePlugin({
     'process.env.isStandalone': JSON.stringify(isStandalone),
-    'process.env.routerBase':      `(() => {const url = window.location.href;const prefixRegex = /.*proxy\//gm; return prefixRegex.test(url) ? url.match(prefixRegex)[0] : '/';})()`,
+    'process.env.routerBase':      `(() => {const url = window.location.href;const prefixRegex = /.*proxy\\//gm; return prefixRegex.test(url) ? url.match(prefixRegex)[0] : '/';})()`,
   }));
 
   baseConfigureWebpack(config);
